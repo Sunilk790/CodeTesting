@@ -1,9 +1,10 @@
+#chapter:1
 print('hello world')
 
 import os
 print(os.listdir())
 
-#ch2
+#chapter:2
 #string
 a = "Sunil"
 print(a)
@@ -128,7 +129,7 @@ print("The average of a and b is", avg)
 
 #Question:6
 
-#chap3
+#chapter:3
 #concatenating two Strings
 a = "Good Morning"
 b = " Sunil"
@@ -208,7 +209,7 @@ print(st)
 letter = "Dear Sunil,\nThis python course is nice!\nThanks!"
 print(letter)
 
-#chap4
+#chapter:4
 #Create a list using []
 a = [1, 2, 4, 56, 6]
 print(a)
@@ -291,7 +292,7 @@ print(sum(a))
 a = (7, 0, 8, 0, 0, 9)
 print(a.count(0))
 
-#chap5
+#chapter:5
 #selfe coding
 a = {
 "Sunil": "A coder",
@@ -465,7 +466,7 @@ print(favLang)
 
 #Q : 8
 
-#chap6
+#chapter:6
 #if-elif-else ladder in python
 a = 45
 if(a>3):
@@ -597,7 +598,8 @@ else:
 print("Your grade is " + grade)
 
 #Q:
-#chap7
+
+#chapter:7
 i = 1
 while i<10:
     print("yes " + str(i))
@@ -699,8 +701,7 @@ n = 3
 for i in range(3):
     print("*" * (i+1))
 
-
-#chap8
+#chapter:8
 marks1 = [45, 98, 86, 77]
 percentage1 = (sum(marks1)/400 )*100
 
@@ -776,8 +777,7 @@ this ="      Sunil is a good     "
 n =remove_and_split(this, "Sunil")
 print(n)
 
-
-#chap9
+#chapter:9
 #1
 f = open("Simple.txt", "r")
 data = f.read()
@@ -957,9 +957,7 @@ with open(newname, "w") as f:
 
 os.remove(oldname)
 
-
-#chap10
-
+#chapter:10
 class SchoolForm:
     formType = "SchoolForm"
     def printData(self):
@@ -1211,8 +1209,8 @@ class Sample:
 obj = Sample("Sunil")
 print(obj.name)
 
+#chapter:11
 
-#chap11
 #in Programmer class
 class Employee:
     company = "Google"
@@ -1323,19 +1321,20 @@ class Employee(Person):
         super().takeBreath()
         print("I am Employee so I am luckily breathing...")
 
-class Programmer(Employee):
+class Programmer(Employee, Person):
     company = "fiver"
     def getSalary(self):
         print(f"No salary to programmers")
 
     def takeBreath(self):
+        super().takeBreath()
         print("I am a Programmer so I am Breathing++..")
 
-p = Person()
-p.takeBreath()
+#p = Person()
+#p.takeBreath()
 
-e = Employee()
-e.takeBreath()
+#e = Employee()
+#e.takeBreath()
 
 pr = Programmer()
 pr.takeBreath()
@@ -1388,53 +1387,54 @@ pr = Programmer()
 #pr.takeBreath()
 
 #class method
+class Employee:
+    company = "Camel"
+    salary = 100
+    location = "Delhi"
 
-#10:25m
+#    def changeSalary(self, sal):
+#        self.__class__.salary = sal
 
-#project1
-import random
-
-def gameWin(comp, you):
-    if comp == you:
-        return None
-    elif comp == 'S':
-        if you=='W':
-            return False
-        elif you=='G':
-            return True
-    elif com == 'W':
-        if you=='G':
-            return False
-        elif you=='S':
-            return True
-        elif comp == 'G':
-            if you=='S':
-                return False
-            elif you=='W':
-                return True
-            
-you = input("your turn:vSnake(S) Water(W) or Gun(G)?")
-a = gameWin(comp, you)
-
-print(f"Coputer chose {cop}")
-print(f"you chose {you}")
-
-if a == None:
-    print("The game is tiel")
-elif a:
-    print("you Win!")
-else:
-    print("you Lose!")
+    @classmethod
+    def changeSalary(cls, sal):
+        cls.salary = sal
 
 
+e = Employee()
+print(e.salary)
+e.changeSalary(455)
+print(e.salary)
+print(Employee.salary)
 
+#propety decorator and getters
+class Employee:
+    company = "Bharat Gas"
+    salary = 5500
+    salarybonus = 400
 
+    @property
+    def totalSalary(self):
+        return self.salary + self.salarybonus
 
+e = Employee()
+print(e.totalSalary)
 
+#setters
+class Employee:
+    company = "Bharat Gas"
+    salary = 5600
+    salarybonus = 400
 
+    @property
+    def totalSalary(self):
+        return self.salary + self.salarybonus
+    
+    @totalSalary.setter
+    def totalSalary(self, val):
+        self.salarybonus = val - self.salary
 
-
-
-
-
-
+e = Employee()
+print(e.totalSalary)
+e.totalSalary = 5800
+print(e.salary)
+print(e.salarybonus)
